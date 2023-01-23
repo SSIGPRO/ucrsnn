@@ -19,7 +19,9 @@
 
 uint16_t input_size = INPUT_NEURONS_NUM;
 
-// Weights buffers. Weights are ordered row-first
+// Weights matrices, encoded row-first.
+// Each row encodes the interconnections from one input spike.
+// Each column encodes the interconnections to one neuron.
 int8_t layer0_w[WIN_BUFF_SIZE];
 int8_t layer0_rw = wrec_buff[WREC_BUFF_SIZE];
 int8_t layer1_w = wout_buff[WOUT_BUFF_SIZE];
