@@ -50,12 +50,13 @@ void apply_spikes(int32_t* potentials, uint16_t* spikes, int8_t* weights, uint16
 	uint16_t* s = spikes;
 	for(uint16_t j = 0; j < spikes_num; ++j) //for each spike
 	{
-		int32_t* p = potentials;
-		if(*s > 578)
+		// Out-of-bound index protection
+		if(*s > INPUTS_NEURONS_NUM)
 		{
-			*s = 578;
+			*s = INPUTS_NEURONS_NUM;
 		}
-
+		
+		int32_t* p = potentials;
 		int8_t* w = weights+*(s++)*n;
 
 		for(uint16_t i = 0; i < n; ++i) //for each neuron
